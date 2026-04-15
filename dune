@@ -1,0 +1,10 @@
+(executable
+ (name main)
+ (modes js)
+ (libraries s2 core js_of_ocaml)
+ (js_of_ocaml
+  (flags
+   (:standard --effects=cps))
+  (javascript_files runtime_stubs.js))
+ (preprocess
+  (pps js_of_ocaml-ppx ppx_jane ppx_uopt)))

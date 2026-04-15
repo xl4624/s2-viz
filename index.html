@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>S2 Cell Visualizer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #111;
+        color: #eee;
+        font-family: system-ui, sans-serif;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+      #controls {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 8px;
+        padding: 16px;
+        min-width: 240px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      #controls h2 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      #controls label {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 4px;
+        color: #aaa;
+      }
+      #controls .row {
+        margin-bottom: 12px;
+      }
+      #controls input[type="range"] {
+        width: 100%;
+      }
+      #controls .value {
+        font-size: 13px;
+        font-weight: 500;
+        color: #7af;
+      }
+      #controls .help {
+        font-size: 11px;
+        color: #888;
+        margin-top: 8px;
+        line-height: 1.4;
+      }
+      #info {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 12px;
+        color: #aaa;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <h2>S2 Cell Coverer</h2>
+      <div class="row">
+        <label>Cell Level: <span class="value" id="level-val">12</span></label>
+        <input type="range" id="level-slider" min="0" max="20" value="12" />
+      </div>
+      <div class="row">
+        <label
+          >Max Cells: <span class="value" id="maxcells-val">64</span></label
+        >
+        <input type="range" id="maxcells-slider" min="1" max="500" value="64" />
+      </div>
+      <div class="row">
+        <label>
+          <input type="checkbox" id="interior-toggle" />
+          Interior covering
+        </label>
+      </div>
+      <div class="row">
+        <label>Cells: <span class="value" id="cell-count">0</span></label>
+      </div>
+      <div class="row" id="pick-row" style="display:none">
+        <label>Picked cell</label>
+        <div class="value" id="pick-token">-</div>
+        <div class="help" id="pick-detail"></div>
+      </div>
+      <div class="help">
+        Left-click and drag to select an area.<br />
+        Shift+click to inspect a cell.<br />
+        Scroll to zoom. Right-drag to rotate.
+      </div>
+    </div>
+    <div id="info">
+      <span id="status">Ready</span>
+    </div>
+    <script type="module" src="globe.js"></script>
+    <script src="./_build/default/main.bc.js" defer></script>
+  </body>
+</html>
